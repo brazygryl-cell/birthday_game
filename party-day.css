@@ -1,0 +1,68 @@
+
+/* PARTY-DAY TV MODE: genuine high contrast navy / white / gold; no purple */
+:root{--show-navy:#051329;--show-blue:#092e6e;--show-blue2:#1458b6;--show-gold:#ffd34d;--show-white:#ffffff;}
+html{background:#041020}
+body{background:radial-gradient(ellipse at 50% 5%,#1656a1 0,#0b2d65 33%,#061a3f 63%,#020c21 100%);color:white}
+.wrap{max-width:1550px}
+.party-ribbon{color:#fff;font-size:clamp(13px,1.1vw,20px);letter-spacing:.2em;text-shadow:0 2px 4px #010916}
+h1{color:#fff;text-shadow:0 4px 0 #0a3370,0 9px 0 #02122d,0 0 25px #72b2ff;line-height:.92}
+h1 small{color:#ffde69;text-shadow:0 3px 5px #03132d;letter-spacing:.08em}
+.score{background:linear-gradient(145deg,#0c2e6d,#071a3c);border:4px solid #f7d665;box-shadow:0 2px 12px #0009,inset 0 0 13px #235dbc}
+.score span{color:#fff;text-shadow:0 2px #000;font-size:clamp(20px,2.5vw,39px)}
+.score b{color:#ffeb85;text-shadow:0 4px #06183d;font-size:clamp(50px,6vw,95px)}
+.stage{background:linear-gradient(155deg,#1759ae 0,#0a347d 41%,#061e50 100%);border:10px solid #ffda58;outline:5px solid #fff2bd;box-shadow:0 0 0 8px #0b2b61,0 0 40px #559eff82,inset 0 0 35px #00132c}
+.bar{color:#ffed96;font:900 clamp(24px,2.9vw,46px) Impact,sans-serif;text-shadow:0 3px #031332}
+.question{color:#fff;text-shadow:0 4px #031b4a;font:900 clamp(34px,3.9vw,64px)/1.12 Impact,sans-serif}
+.answer,.answer:not(.open){background:linear-gradient(145deg,#0e449b,#082858);border:4px solid #f5f7ff;color:#fff;box-shadow:inset 0 0 14px #3977bc,0 3px 4px #0007;min-height:clamp(78px,9.3vh,126px)}
+.answer .num{background:#ffde6d;color:#001c42;border:3px solid #fff;width:58px;height:58px;flex:0 0 58px;font:900 clamp(33px,3.5vw,50px) Impact,sans-serif;box-shadow:0 2px 6px #001022}
+.answer.open{background:#fff!important;color:#041e43!important;border-color:#ffde6d;animation:boardFlip .4s ease-out}
+.answer.open .num{background:#0a3480;color:#fff;border-color:#ffd34d}
+.answer.open .text{color:#081c3c;font:900 clamp(25px,2.65vw,41px)/1 Impact,sans-serif}
+.answer.open .pts{background:#0c377f;color:#fff;border:2px solid #ffdf70;font:900 clamp(29px,3vw,47px)/1 Impact,sans-serif;min-width:70px;text-align:center;padding:6px 11px}
+.showline .phase{background:#ffdf65;color:#061d44;border:3px solid #fff;font-weight:900}
+.showline .turn{color:#fff;text-shadow:0 2px #051229;font-size:clamp(18px,2vw,30px)}
+.showline .timer{background:#041a3e;border:4px solid #fff;color:#fff;font-size:clamp(37px,4vw,60px);box-shadow:inset 0 0 15px #2053a1}
+.showline .timer.warning{background:#8b0820;color:#fff;border-color:#fff;animation:timerAlarm .35s alternate infinite}
+.strikes span{color:#9eafcf}.strikes span.on{color:#ff344b;text-shadow:0 0 12px #fff,0 0 25px #f03;font-size:85px}
+.controls{background:#061a39;border:2px solid #7bbaff;box-shadow:0 7px 20px #0007}
+.controls h2{color:#ffdd6b}
+.controls .help{color:#e6f0ff}
+button{background:#1252a9;color:white;border:2px solid #b5d9ff}
+button.gold{background:#a06a08;color:#fff;border-color:#ffe48d}
+button.green{background:#046c62;border-color:#b7fff2}
+button.red{background:#a51c37;border-color:#ffbaca}
+input,select{background:#0a3069;color:#fff;border-color:#8fbbfa}
+.host-note{background:#0c3671;color:#fff}
+.host-stage{background:#0a2c65;border:2px solid #80b5fa}
+.key-cell{background:#0d3b81!important;border:2px solid #a9d3ff!important;color:#fff!important}
+.key-cell strong{color:#071a3c!important;background:#ffde64!important;font-weight:900!important}
+.overlay{background:#031126e8}
+.overlay div{color:#ffec87;text-shadow:0 3px #613d07,0 0 15px #ffdd6580}
+.fast{background:#082c62;border-color:#ffdc66}
+.fast td{background:#114c9e}
+body.screen .wrap{max-width:1800px;padding:16px 25px}
+body.screen .question{font-size:clamp(40px,4vw,72px)}
+body.screen .answer{min-height:clamp(92px,10vh,150px)}
+body.screen .scores{margin:12px 0 20px}
+body.screen .score b{font-size:clamp(60px,6vw,110px)}
+body.screen h1{font-size:clamp(56px,7vw,120px)}
+body.screen .party-ribbon{margin:3px}
+#partyFx{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
+.party-particle{position:absolute;top:-40px;width:11px;height:22px;opacity:0;animation:partyFall var(--fall,2.9s) linear forwards;transform:rotate(24deg)}
+.party-strobe .stage{animation:boardPulse .6s ease}
+.party-shake .stage{animation:boardShake .38s ease}
+.party-winner .stage{animation:winnerGlow 1.3s ease-in-out 3}
+.music-desk{margin:18px 0;background:#0a2757;border:2px solid #8bc5ff;padding:17px;border-radius:15px}
+.music-desk .row{gap:12px}.music-desk label{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-weight:800}
+.music-desk input[type=file]{max-width:330px;font-size:13px}.music-desk input[type=range]{width:145px}
+.music-desk .music-status{font-size:14px;color:#fff;font-weight:bold;margin:8px 0}
+.music-desk .music-note{color:#dbeeff;font-size:13px;line-height:1.6}
+.sound-pill{display:inline-flex;align-items:center;gap:5px;border:1px solid #bfd9ff;padding:4px 10px;border-radius:25px;font-size:12px}
+@keyframes boardFlip{from{transform:rotateX(75deg);filter:brightness(1.7)}to{transform:rotateX(0)}}
+@keyframes boardPulse{0%,100%{filter:brightness(1)}40%{filter:brightness(1.55)}}
+@keyframes boardShake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-13px)}40%,80%{transform:translateX(13px)}}
+@keyframes winnerGlow{0%,100%{box-shadow:0 0 30px #ffdf74}50%{box-shadow:0 0 110px #ffe15f,0 0 55px white}}
+@keyframes partyFall{0%{opacity:1;transform:translate3d(0,-30px,0) rotate(0)}100%{opacity:.9;transform:translate3d(var(--drift,30px),110vh,0) rotate(950deg)}}
+@keyframes timerAlarm{to{box-shadow:0 0 30px #ff4157}}
+@media(max-width:650px){.wrap{padding:8px}.stage{border:5px solid #ffde66;outline:2px solid #fff4bc;padding:9px}.answer,.answer:not(.open){min-height:53px}.answer .num{width:37px;height:37px;flex-basis:37px;font-size:28px}.answer.open .text{font-size:22px}.answer.open .pts{font-size:25px;min-width:50px;padding:4px}.question{font-size:31px}.score b{font-size:48px}.strikes span.on{font-size:47px}body.screen .answer{min-height:56px}}
+@media(prefers-reduced-motion:reduce){.party-particle,.party-strobe .stage,.party-shake .stage,.party-winner .stage{animation:none}}
