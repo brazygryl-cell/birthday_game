@@ -1,41 +1,58 @@
-# 💜 Mom's 55th Birthday — Family Feud: Purple & Silver Edition
+# 🎤 Mom's Birthday Showdown — PARTY DAY EDITION
 
-A two-screen, unofficial Family Feud-inspired party game for 25+ guests, now with a purple/chrome-silver theme, 20 more challenging family/social scenario rounds, on-screen answer timers, face-off buzzers, dramatic sound effects, play/pass/steal phases, and a Fast Money bonus.
+A self-contained, unofficial Family Feud-inspired game for Mom's 55th birthday. Designed for 25+ guests.
 
-## Set up the laptop and TV
+## Open it
 
-1. Connect a laptop to the TV via HDMI.
-2. On Windows press **Windows + P → Extend**, **not Duplicate**. The laptop retains private host controls.
-3. Open the **host** page: https://brazygryl-cell.github.io/birthday_game/host.html
-4. Click **OPEN TV DISPLAY** (or open https://brazygryl-cell.github.io/birthday_game/tv.html in a new browser window). Move the separate TV window to the extended television and maximize it (F11).
-5. Keep the host page on the laptop. The audience sees only the board, timer, phase indicator, strikes, scores, and reveal effects, **not** the host-only answer key.
-6. If needed, click the host's **Sound on** button and route the laptop's audio to the TV over HDMI. Some browsers may block audio in unattended TV windows, but host audio remains available.
+- **Host:** https://brazygryl-cell.github.io/birthday_game/host.html
+- **TV audience:** https://brazygryl-cell.github.io/birthday_game/tv.html
 
-**Important:** Both pages must be in the **same browser profile on the same computer** (and same website origin) for synchronized updates. An independent smart-TV browser will not sync to the laptop without a separate networking service. GitHub Pages must be enabled: Settings → Pages → Deploy from a branch → main / (root).
+**Laptop + HDMI (recommended):** Connect laptop to TV → press **Win + P → Extend** (never Duplicate) → open host page on laptop → click **OPEN TV DISPLAY** → drag its window to the TV and press F11. Keep the host's answer key on the laptop only. Both windows must run **in the same browser profile/computer**, not on two independent devices. TV browser opened independently will *not* sync.
 
-## How a round works
+If Pages is disabled, enable it under Settings → Pages → Deploy from a branch → `main` → `/ (root)`.
 
-1. Host introduces the round; invite one contestant from each team to the face-off.
-2. Host clicks **Team A Buzzer** or **Team B Buzzer** (Q/W) when that player buzzes in. These are **host-operated sound buttons**, not wireless contestant buzzers. Reset face-off as needed.
-3. Host reveals the matching accepted answer using the **private answer key**. Accept reasonable synonyms. Decide who wins the face-off, then select **Play** or **Pass**. The current stage is shown on the TV.
-4. For each guess, start the answer clock with **T** or the green timer button. Choose 10, 15, 20, 30, 45, or 60 seconds. The last five seconds trigger ticks and a red countdown. Timeouts sound a buzzer; the host decides whether to add a strike.
-5. On a correct guess, click the answer in the private answer key to reveal it. The clock stops and a correct-answer chime plays. On a miss, hit **Strike** (X): the clock stops and a wrong-answer buzzer plays.
-6. On the third strike, **Steal Chance** displays. Ask the opposing team for one answer; reveal or strike it manually. Award the accumulated revealed points to the appropriate team using **Award Team A/B**. This is intentionally host-controlled so house rules and contested answers are manageable.
-7. Advance to the next round. The game automatically uses single points for rounds 1–9, double points 10–14, triple points 15–20.
+**After updating:** reload both windows with **Ctrl+Shift+R**. If you need to refresh the host, scores persist in that browser. Don't click **New game** unless you want to erase scores.
 
-Use **Winner** for a finale fanfare and **Fast Money** as an optional two-player bonus round (20 and 25-second timers). The game saves scores and round state in the browser's localStorage.
+## Changes for party day
 
-## Host shortcuts
+- **No purple**: ultra-readable classic navy-and-gold, strong white text, huge scores and numbers, clean white revealed answer tiles, gold borders.
+- **Full host display**: original 20 difficult family/social questions, all private answers and point values, click to reveal.
+- **Live stages**: face-off, play, pass, steal, round complete.
+- **10–60 second answer clock**: displayed on both screens, last five seconds pulse and tick, timeout buzzes.
+- **Show effects**: board shake on strikes, stage flash on answers, synced confetti, victory glow, dramatic drumroll and simulated applause.
+- **Music desk** on host screen: intro, thinking, correct, wrong, buzzer, steal and win MP3 slots with volume/preview/stop and optional automatic cues. Synthesized sounds still work with no MP3s.
+- **Fast Money** remains an optional host-managed bonus game.
 
-- **1–6** — Reveal / re-hide an answer
-- **Q / W** — Team A / Team B buzzer
-- **T** — Restart answer timer
-- **X** — Strike
-- **A / B** — Award revealed points
-- **N** — Next round
-- **P** — Toggle host controls
-- **Escape** — Restore controls
+## Music — easiest method for today
 
-## Game assets and limitations
+On the **host screen**, find **Music & Showtime Effects**. Pick a track type → click **MP3 file** → select the downloaded audio from the laptop → click **Play track** to test. Repeat for the other types. Enable **Automatically use loaded MP3s** only when ready. Local files stay assigned only as long as the host page remains open; do not refresh once you've selected them.
 
-Everything is contained in `index.html`, including question and answer data, styling, and synthetic Web Audio sound effects. No original copyrighted show theme or recordings are included; add licensed party music later. Survey answer rankings and points are fictional for entertainment and are **not collected survey results**. Browsers may mute autoplay until user interaction. TV remote support varies by device; HDMI + laptop is the dependable option.
+**Important:** Sound from these uploaded files comes from **your laptop browser**. Set Windows audio output to the HDMI-connected TV (or party speaker). Browser playback may require clicking a play button once.
+
+## Music — permanent upload method
+
+Create `music/` in the repository by uploading any of the following exact filenames via GitHub **Add file → Upload files**:
+
+```text
+music/intro.mp3
+music/thinking.mp3
+music/correct.mp3
+music/wrong.mp3
+music/buzzer.mp3
+music/steal.mp3
+music/win.mp3
+```
+
+Then on the host screen click **Use uploaded music/ folder**, choose the track and click Play to verify. Missing files will not play. No copyrighted music has been included; use music you have the rights to play.
+
+## Suggested party structure
+
+Split 25+ people into two teams; rotate two representatives for each face-off. Host clicks Q or W to buzz that team. Highest-ranked accepted answer wins face-off; winning team chooses Play or Pass. Start clock T for a guess. Reveal an accepted answer from host answer sheet, or use X for a strike. On three strikes, other team gets one steal guess. Host awards all visible board points to the correct team with A/B. Later rounds are automatically 2× (rounds 10–14) and 3× (rounds 15–20). Optional Fast Money at the end.
+
+## Host keyboard shortcuts
+
+`Q`/`W` — face-off buzzers · `T` — start/restart answer timer · `1`–`6` — reveal answers · `X` — strike · `A`/`B` — award points · `N` — next round · `P` — hide host controls · `Escape` — show controls.
+
+## Limitations
+
+This is a host-controlled party game, not networked phones/physical buzzers. The TV and host windows synchronize using same-browser localStorage events; separate devices do not sync without a backend. On-screen survey values are **fictional party-game rankings**, not real surveyed responses. Some smart TVs do not support the required sound or browser features. For reliability use a laptop + HDMI.
