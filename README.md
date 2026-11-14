@@ -1,3 +1,11 @@
+## ✨ New: Animated birthday lounge for background music
+
+Open **[Fabulous 55 Birthday Lounge](https://brazygryl-cell.github.io/birthday_game/lounge.html)** or click **OPEN BIRTHDAY LOUNGE** from the host screen. It is a silent, animated TV backdrop (golden lights, floating stars, changing messages, rotating disco / starry themes), intentionally separate from the game and your playlist.
+
+**For a laptop and TV without separate speakers:** connect HDMI, press **Windows + P → Extend**, put the lounge browser window on the TV, press **F11** to go fullscreen. On the laptop screen, open YouTube Music or a playlist in a different browser tab/window, play it, and select your TV's HDMI output in Windows sound settings. This lets you control music on your laptop while the TV shows the birthday lounge. Audio will use the TV's built-in speakers if it has them. If the TV also has no speakers, you'll need an external audio output device; HDMI itself does not produce sound.
+
+Use the lounge controls at top right for **Golden lounge**, **Disco lights**, or **Starry night**. Press **F** for fullscreen, **H** to hide/show buttons, **Space** to pause, or **1/2/3** to switch theme. The lounge does not listen to or analyze the YouTube audio; its motion is decorative and independent. To start the game, switch the TV browser window to `tv.html`, and leave `host.html` on the laptop.
+
 # 🎤 Mom's Birthday Showdown — PARTY DAY EDITION
 
 A self-contained, unofficial Family Feud-inspired game for Mom's 55th birthday. Designed for 25+ guests.
