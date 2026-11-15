@@ -66,3 +66,28 @@ body.screen .party-ribbon{margin:3px}
 @keyframes timerAlarm{to{box-shadow:0 0 30px #ff4157}}
 @media(max-width:650px){.wrap{padding:8px}.stage{border:5px solid #ffde66;outline:2px solid #fff4bc;padding:9px}.answer,.answer:not(.open){min-height:53px}.answer .num{width:37px;height:37px;flex-basis:37px;font-size:28px}.answer.open .text{font-size:22px}.answer.open .pts{font-size:25px;min-width:50px;padding:4px}.question{font-size:31px}.score b{font-size:48px}.strikes span.on{font-size:47px}body.screen .answer{min-height:56px}}
 @media(prefers-reduced-motion:reduce){.party-particle,.party-strobe .stage,.party-shake .stage,.party-winner .stage{animation:none}}
+
+/* TV audience size is independent of browser zoom and adjustable from host. */
+body.screen{overflow-x:hidden}
+body.screen .wrap{
+  width:min(96vw,1600px)!important;
+  max-width:1600px!important;
+  margin:0 auto!important;
+  transform:scale(var(--feud-tv-scale,.65));
+  transform-origin:top center;
+  padding:10px 16px!important
+}
+body.screen .stage{min-height:0!important;padding:15px!important;border-width:6px!important;outline-width:3px!important}
+body.screen .answers .answer{min-height:clamp(65px,8vh,100px)!important}
+body.screen .score b{font-size:clamp(44px,5vw,83px)!important}
+body.screen h1{font-size:clamp(45px,6vw,100px)!important;margin:12px 0!important}
+body.screen .question{font-size:clamp(31px,3.2vw,54px)!important;margin:11px 0!important}
+body.screen .scores{margin:10px 0!important}
+body.screen .strikes{min-height:65px!important}
+body.screen .strikes span{font-size:58px!important}
+body.screen .showline{margin:6px 0 12px!important}
+body.screen .answer .num{width:50px;height:50px;flex-basis:50px}
+body.screen .party-ribbon{font-size:14px}
+.tv-size-control{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#123c74;border:2px solid #fbd65d;border-radius:12px;padding:12px;color:#fff;font:800 17px Arial,sans-serif}
+.tv-size-control input{width:min(230px,45vw);accent-color:#ffdb6b}
+.tv-size-control output{font:900 23px Impact,sans-serif;color:#ffdf74;min-width:65px}
