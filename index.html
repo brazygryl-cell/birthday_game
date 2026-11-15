@@ -31,42 +31,127 @@ h1 small{font-weight:900;text-shadow:0 3px 6px #130522}
 .host-note{color:#fff}
 @media(max-width:650px){.answer{min-height:55px}.answer .num{width:38px;height:38px;flex-basis:38px;font-size:27px}.answer .text{font-size:22px}.answer .pts{font-size:26px;min-width:47px;padding:3px 6px}.question{font-size:32px}.score b{font-size:44px}}
 
-/* Audience TV fit — embedded to work even when external stylesheet is cached. */
-body.screen{margin:0!important;overflow:hidden!important}
-body.screen .wrap{position:relative!important;width:1200px!important;max-width:none!important;left:50%!important;margin:0!important;padding:10px 18px!important;transform:translateX(-50%) scale(var(--feud-fit-scale,.5))!important;transform-origin:top center!important}
-body.screen .stage{min-height:0!important;padding:14px!important}
-body.screen h1{font-size:70px!important;line-height:.95!important;margin:8px 0 14px!important}
-body.screen h1 small{font-size:30px!important}
-body.screen .scores{margin:8px 0!important}
-body.screen .score{padding:7px!important}
-body.screen .score b{font-size:60px!important}
-body.screen .showline{margin:7px 0!important}
-body.screen .question{font-size:39px!important;line-height:1.14!important;margin:12px 0!important}
-body.screen .answers{gap:9px!important}
-body.screen .answers .answer{min-height:75px!important;height:75px!important}
-body.screen .answer.open .text{font-size:28px!important}
-body.screen .strikes{min-height:58px!important}
-body.screen .strikes span{font-size:55px!important}
-</style><link rel="stylesheet" href="party-day.css?v=6"></head><body><div class="wrap"><div class="party-ribbon">✦ THE BIRTHDAY SHOWDOWN · 55 & FABULOUS ✦</div><h1>FAMILY <small>FEUD · MOM'S BIRTHDAY</small></h1><div class="scores"><div class="score"><span id="n0">TEAM A</span><b id="s0">0</b></div><div class="score">ROUND POINTS<b id="pot">0</b></div><div class="score"><span id="n1">TEAM B</span><b id="s1">0</b></div></div><div class="showline"><span id="phase" class="phase">FACE-OFF</span><span id="turn" class="turn">BUZZ IN TO START</span><span id="roundClock" class="timer">00:20</span></div><main class="stage"><div class="bar"><span id="round">ROUND 1</span><span id="multi">SINGLE POINTS</span></div><div class="question" id="q"></div><div class="answers" id="answers"></div><div class="strikes" id="strikes"><span>✕</span><span>✕</span><span>✕</span></div></main><section class="controls"><h2>🎙 HOST CONTROL BOOTH</h2><div class="row"><label>Team A <input id="team0" value="Team A"></label><label>Team B <input id="team1" value="Team B"></label><button id="names">Update names</button><label>Mom's name <input id="mom" placeholder="Optional"></label><button id="birthday">Personalize</button></div><h2>🎛 SHOW CONTROL</h2><div class="host-stage"><div class="row"><button class="gold buzzer" id="buzz0">🔔 TEAM A BUZZER (Q)</button><button class="red buzzer" id="buzz1">🔔 TEAM B BUZZER (W)</button><button id="buzzReset">Reset face-off</button></div><div class="row"><button id="play">▶ Play</button><button id="pass">↪ Pass</button><button class="red" id="startSteal">🔥 Steal chance</button><button id="finishPhase">🏁 Round finished</button></div><div class="row"><label>Answer clock <select id="duration"><option value="10">10 sec</option><option value="15">15 sec</option><option value="20" selected>20 sec</option><option value="30">30 sec</option><option value="45">45 sec</option><option value="60">60 sec</option></select></label><button class="green" id="startClock">▶ Start / Restart (T)</button><button id="pauseClock">⏸ Pause</button><button id="clearClock">↺ Reset</button></div><div class="row"><button id="sCorrect">✨ Correct</button><button id="sWrong">💥 Wrong</button><button id="sBell">🔔 Bell</button><button id="sWin">🎊 Fanfare</button><button id="sTick">⏱ Tick</button></div><p class="help">Q/W: buzz a contestant; T: start answer timer. Use Play, Pass, or Steal to update the TV phase. The host decides whether similar guesses count.</p></div><h2>🔐 HOST-ONLY ANSWER KEY</h2><p class="host-note">Only you can see this answer sheet. Click an answer below to reveal it on the TV. Guests only see the hidden board in the separate TV window. Similar guesses can count—use your judgment as host.</p><div id="answerKey" class="answer-key"></div><h2>Reveal the survey!</h2><div class="row" id="reveal"></div><div class="row"><button class="red" id="strike">✕ STRIKE (X)</button><button id="unstrike">Undo strike</button><button id="all">Reveal all</button><button id="hide">Hide answers</button></div><h2>Award points</h2><div class="row"><button class="green" id="award0">Award Team A (A)</button><button class="green" id="award1">Award Team B (B)</button><button class="gold" id="steal">STEAL!</button><button id="undo">Undo last award</button></div><h2>📺 TV BOARD SIZE</h2><div class="tv-size-control"><label for="tvScale">Shrink/enlarge the Family Feud board</label><input id="tvScale" type="range" min="45" max="100" step="5" value="65"><output id="tvScaleValue">65%</output><button id="tvSmaller">− Smaller</button><button id="tvBigger">+ Bigger</button><span class="help">Updates the audience TV automatically. Does not affect your host answer key.</span></div><h2>Show controls</h2><div class="row"><button class="gold" id="openTV">📺 OPEN TV DISPLAY</button><button id="openLounge" class="gold">✨ OPEN BIRTHDAY LOUNGE</button><button id="copyTV">Copy TV link</button><span class="help">Use Windows display mode <strong>Extend</strong>, not Duplicate, to keep your answer key private.</span></div><div class="row"><button id="prev">← Previous</button><button class="gold" id="next">Next round → (N)</button><select id="choose"></select><button id="present">📺 Presentation (P)</button><button id="fullscreen">⛶ Fullscreen</button><button id="sound">🔊 Sound on</button><button id="winner">🏆 Winner</button><button id="fast">⚡ Fast Money</button><button class="red" id="reset">New game</button></div><p id="status" class="help"></p><p class="help">For 25+ guests, use two teams and rotate participants. Host controls answers and scores. Keys: 1–6 reveal, X strike, A/B award, N next, P hide controls, Escape restore controls. HDMI-connected laptop is recommended; TV remote navigation varies by browser. Original fictional survey answers; no real TV show music included.</p></section><section class="fast hidden" id="fastPanel"><h2>⚡ FAST MONEY — REACH 200!</h2><p>Two players answer five questions in 20 and 25 seconds, respectively. Tap a hidden answer or point cell to reveal it. Enter each player's total manually.</p><div class="row"><button id="t20">20-second timer</button><button id="t25">25-second timer</button><button id="stop">Stop</button><b id="clock">00:20</b></div><table><tbody id="fastRows"></tbody></table><div class="row"><label>Player 1 <input id="f1" type="number" value="0"></label><label>Player 2 <input id="f2" type="number" value="0"></label><strong>Total: <span id="total">0</span>/200</strong><button id="celebrate">Celebrate!</button><button id="close">Close</button></div></section><p class="help" style="text-align:center">Happy Birthday, Mom! ♥ · Original unofficial birthday party tribute · Survey rankings are fictional.</p></div><div class="overlay" id="overlay"><div id="overlayText"></div></div>
+
+/* TV SHOW MODE: deliberately compose everything within one viewport, not scaled overflow. */
+html:has(body.screen), body.screen {width:100%;height:100%;margin:0!important;overflow:hidden!important}
+body.screen{background:radial-gradient(ellipse at top,#1557a6,#071d4b 65%,#020b20)!important}
+body.screen .wrap{
+  position:relative!important;left:auto!important;top:auto!important;
+  transform:none!important;transform-origin:initial!important;
+  margin:0 auto!important;padding:clamp(7px,1.1vh,15px) clamp(10px,1.4vw,24px)!important;
+  width:100%!important;max-width:100vw!important;
+  height:100vh!important;height:100dvh!important;min-height:0!important;
+  display:grid!important;grid-template-rows:auto auto auto minmax(0,1fr)!important;
+  gap:clamp(5px,.8vh,12px)!important;box-sizing:border-box!important;
+}
+body.screen .party-ribbon{
+  font-size:clamp(10px,1.3vh,17px)!important;letter-spacing:.17em!important;
+  margin:0!important;line-height:1.15!important;text-align:center!important;
+}
+body.screen h1{
+  font-size:clamp(35px,7vh,85px)!important;
+  line-height:.83!important;margin:0!important;padding:0!important;
+  text-align:center!important;color:white!important;letter-spacing:0!important;
+}
+body.screen h1 small{
+  margin-top:4px!important;font-size:clamp(12px,2.6vh,29px)!important;
+  line-height:1.1!important;letter-spacing:.11em!important;
+}
+body.screen .scores{
+  display:grid!important;grid-template-columns:1fr .8fr 1fr!important;
+  gap:clamp(5px,1vw,15px)!important;margin:0!important;min-height:0!important;
+}
+body.screen .score{
+  padding:clamp(3px,.8vh,10px)!important;
+  min-width:0!important;min-height:0!important;
+  background:#092957!important;color:#fff!important;border:3px solid #ffe08d!important;
+  font-size:clamp(12px,2.2vh,24px)!important;
+  line-height:1.05!important;display:flex!important;flex-direction:column!important;
+  justify-content:center!important;
+}
+body.screen .score span{font-size:inherit!important;line-height:1.07!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+body.screen .score b{font-size:clamp(27px,5.3vh,59px)!important;line-height:.98!important;margin-top:2px!important;color:#fff3bd!important}
+body.screen .showline{
+  position:absolute!important;bottom:clamp(5px,1vh,12px)!important;left:0!important;right:0!important;
+  display:none!important;
+}
+body.screen .stage{
+  width:100%!important;min-height:0!important;height:100%!important;
+  padding:clamp(7px,1.2vh,16px)!important;
+  border:clamp(4px,.7vh,8px) solid #ffda66!important;
+  outline:2px solid #fff2cb!important;border-radius:clamp(10px,1.6vh,20px)!important;
+  overflow:hidden!important;box-sizing:border-box!important;
+  display:grid!important;grid-template-rows:auto auto minmax(0,1fr) auto!important;
+  gap:clamp(4px,.75vh,10px)!important;
+  background:linear-gradient(160deg,#154b96,#081f56)!important;
+}
+body.screen .bar{
+  font-size:clamp(14px,2.5vh,27px)!important;line-height:1!important;
+  min-height:0!important;flex-shrink:0!important;color:#fff1ab!important;
+}
+body.screen .question{
+  font-size:clamp(21px,3.8vh,43px)!important;line-height:1.05!important;
+  margin:0!important;min-height:0!important;max-height:none!important;
+  align-self:center!important;overflow-wrap:anywhere!important;
+  text-align:center!important;color:white!important;
+}
+body.screen .answers{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-template-rows:repeat(3,minmax(0,1fr))!important;gap:clamp(4px,1vh,12px)!important;
+  min-width:0!important;min-height:0!important;height:100%!important;
+}
+body.screen .answers .answer{
+  height:100%!important;min-height:0!important;min-width:0!important;
+  padding:clamp(3px,.8vh,9px) clamp(4px,.7vw,12px)!important;
+  gap:clamp(4px,1vw,12px)!important;
+  border:clamp(2px,.4vh,4px) solid white!important;
+  border-radius:clamp(5px,.7vh,10px)!important;
+  font-size:clamp(18px,3vh,32px)!important;
+  background:linear-gradient(#1555a4,#082957)!important;
+  box-sizing:border-box!important;
+}
+body.screen .answer .num{
+  width:clamp(27px,5vh,52px)!important;height:clamp(27px,5vh,52px)!important;
+  flex:0 0 clamp(27px,5vh,52px)!important;font-size:clamp(17px,3vh,31px)!important;
+  border:2px solid #fff!important;background:#ffdf7b!important;color:#061d40!important;
+}
+body.screen .answer.open{background:#fff!important;border-color:#ffe180!important;color:#071c43!important}
+body.screen .answer.open .num{background:#103f87!important;color:white!important;border-color:#ffe180!important}
+body.screen .answer.open .text{
+  color:#082248!important;min-width:0!important;
+  font-size:clamp(15px,2.75vh,29px)!important;
+  text-overflow:ellipsis!important;white-space:nowrap!important;overflow:hidden!important;
+}
+body.screen .answer.open .pts{
+  background:#103f87!important;color:#fff!important;
+  font-size:clamp(16px,2.8vh,30px)!important;min-width:0!important;
+  padding:clamp(2px,.35vh,5px) clamp(4px,.6vw,10px)!important;
+}
+body.screen .strikes{
+  height:clamp(24px,4.7vh,51px)!important;min-height:0!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+}
+body.screen .strikes span,body.screen .strikes span.on{
+  font-size:clamp(24px,4.4vh,49px)!important;line-height:1!important;margin:0 clamp(8px,1.7vw,20px)!important;
+}
+body.screen .controls,body.screen .fast,body.screen .help,body.screen .music-desk{display:none!important}
+@media(max-height:650px){
+ body.screen h1{font-size:clamp(32px,6vh,58px)!important}
+ body.screen .score b{font-size:clamp(24px,4.5vh,42px)!important}
+ body.screen .question{font-size:clamp(18px,3.4vh,32px)!important}
+ body.screen .answer.open .text{font-size:clamp(14px,2.5vh,23px)!important}
+ body.screen .strikes{height:3.8vh!important}
+}
+</style><link rel="stylesheet" href="party-day.css?v=8"></head><body><div class="wrap"><div class="party-ribbon">✦ THE BIRTHDAY SHOWDOWN · 55 & FABULOUS ✦</div><h1>FAMILY <small>FEUD · MOM'S BIRTHDAY</small></h1><div class="scores"><div class="score"><span id="n0">TEAM A</span><b id="s0">0</b></div><div class="score">ROUND POINTS<b id="pot">0</b></div><div class="score"><span id="n1">TEAM B</span><b id="s1">0</b></div></div><div class="showline"><span id="phase" class="phase">FACE-OFF</span><span id="turn" class="turn">BUZZ IN TO START</span><span id="roundClock" class="timer">00:20</span></div><main class="stage"><div class="bar"><span id="round">ROUND 1</span><span id="multi">SINGLE POINTS</span></div><div class="question" id="q"></div><div class="answers" id="answers"></div><div class="strikes" id="strikes"><span>✕</span><span>✕</span><span>✕</span></div></main><section class="controls"><h2>🎙 HOST CONTROL BOOTH</h2><div class="row"><label>Team A <input id="team0" value="Team A"></label><label>Team B <input id="team1" value="Team B"></label><button id="names">Update names</button><label>Mom's name <input id="mom" placeholder="Optional"></label><button id="birthday">Personalize</button></div><h2>🎛 SHOW CONTROL</h2><div class="host-stage"><div class="row"><button class="gold buzzer" id="buzz0">🔔 TEAM A BUZZER (Q)</button><button class="red buzzer" id="buzz1">🔔 TEAM B BUZZER (W)</button><button id="buzzReset">Reset face-off</button></div><div class="row"><button id="play">▶ Play</button><button id="pass">↪ Pass</button><button class="red" id="startSteal">🔥 Steal chance</button><button id="finishPhase">🏁 Round finished</button></div><div class="row"><label>Answer clock <select id="duration"><option value="10">10 sec</option><option value="15">15 sec</option><option value="20" selected>20 sec</option><option value="30">30 sec</option><option value="45">45 sec</option><option value="60">60 sec</option></select></label><button class="green" id="startClock">▶ Start / Restart (T)</button><button id="pauseClock">⏸ Pause</button><button id="clearClock">↺ Reset</button></div><div class="row"><button id="sCorrect">✨ Correct</button><button id="sWrong">💥 Wrong</button><button id="sBell">🔔 Bell</button><button id="sWin">🎊 Fanfare</button><button id="sTick">⏱ Tick</button></div><p class="help">Q/W: buzz a contestant; T: start answer timer. Use Play, Pass, or Steal to update the TV phase. The host decides whether similar guesses count.</p></div><h2>🔐 HOST-ONLY ANSWER KEY</h2><p class="host-note">Only you can see this answer sheet. Click an answer below to reveal it on the TV. Guests only see the hidden board in the separate TV window. Similar guesses can count—use your judgment as host.</p><div id="answerKey" class="answer-key"></div><h2>Reveal the survey!</h2><div class="row" id="reveal"></div><div class="row"><button class="red" id="strike">✕ STRIKE (X)</button><button id="unstrike">Undo strike</button><button id="all">Reveal all</button><button id="hide">Hide answers</button></div><h2>Award points</h2><div class="row"><button class="green" id="award0">Award Team A (A)</button><button class="green" id="award1">Award Team B (B)</button><button class="gold" id="steal">STEAL!</button><button id="undo">Undo last award</button></div><h2>📺 TV BOARD SIZE</h2><div class="tv-size-control"><label for="tvScale">Shrink/enlarge the Family Feud board</label><input id="tvScale" type="range" min="45" max="100" step="5" value="65"><output id="tvScaleValue">65%</output><button id="tvSmaller">− Smaller</button><button id="tvBigger">+ Bigger</button><span class="help">Updates the audience TV automatically. Does not affect your host answer key.</span></div><h2>Show controls</h2><div class="row"><button class="gold" id="openTV">📺 OPEN TV DISPLAY</button><button id="openLounge" class="gold">✨ OPEN BIRTHDAY LOUNGE</button><button id="copyTV">Copy TV link</button><span class="help">Use Windows display mode <strong>Extend</strong>, not Duplicate, to keep your answer key private.</span></div><div class="row"><button id="prev">← Previous</button><button class="gold" id="next">Next round → (N)</button><select id="choose"></select><button id="present">📺 Presentation (P)</button><button id="fullscreen">⛶ Fullscreen</button><button id="sound">🔊 Sound on</button><button id="winner">🏆 Winner</button><button id="fast">⚡ Fast Money</button><button class="red" id="reset">New game</button></div><p id="status" class="help"></p><p class="help">For 25+ guests, use two teams and rotate participants. Host controls answers and scores. Keys: 1–6 reveal, X strike, A/B award, N next, P hide controls, Escape restore controls. HDMI-connected laptop is recommended; TV remote navigation varies by browser. Original fictional survey answers; no real TV show music included.</p></section><section class="fast hidden" id="fastPanel"><h2>⚡ FAST MONEY — REACH 200!</h2><p>Two players answer five questions in 20 and 25 seconds, respectively. Tap a hidden answer or point cell to reveal it. Enter each player's total manually.</p><div class="row"><button id="t20">20-second timer</button><button id="t25">25-second timer</button><button id="stop">Stop</button><b id="clock">00:20</b></div><table><tbody id="fastRows"></tbody></table><div class="row"><label>Player 1 <input id="f1" type="number" value="0"></label><label>Player 2 <input id="f2" type="number" value="0"></label><strong>Total: <span id="total">0</span>/200</strong><button id="celebrate">Celebrate!</button><button id="close">Close</button></div></section><p class="help" style="text-align:center">Happy Birthday, Mom! ♥ · Original unofficial birthday party tribute · Survey rankings are fictional.</p></div><div class="overlay" id="overlay"><div id="overlayText"></div></div>
 <script>
 const data=[{"q":"Name something a guest might quietly do after tasting a dish they dislike.","a":[["Push it around the plate",32],["Say they're full",25],["Drink something",17],["Throw it away discreetly",12],["Offer it to someone else",9],["Cover it with another food",5]]},{"q":"Name a family argument that starts with 'That's not how it happened.'","a":[["Childhood memory",32],["Who started it",25],["Old relationship story",17],["Who paid",12],["Family vacation",9],["Who broke something",5]]},{"q":"Name a reason someone may suddenly leave the family group chat.","a":[["Too much drama",32],["Too many notifications",25],["Felt targeted",17],["Political argument",12],["Spoiled surprise",9],["Wrong message",5]]},{"q":"Name something an adult still calls Mom to ask how to do.","a":[["Cook a recipe",32],["Remove a stain",25],["Handle a bill",17],["Find a document",12],["Parenting advice",9],["Fix something",5]]},{"q":"Name a sign someone is pretending to enjoy a party.","a":[["Checks phone",32],["Fake smile",25],["Looks at clock",17],["Stays near door",12],["Says they're tired",9],["Avoids conversation",5]]},{"q":"Name something that seems fine until you have 25 guests.","a":[["Not enough seating",32],["Bathroom line",25],["Parking",17],["Wi-Fi",12],["Ice supply",9],["Serving utensils",5]]},{"q":"Name an excuse people use when late but don't want to admit why.","a":[["Traffic",32],["Lost keys",25],["Stopped for gas",17],["Outfit emergency",12],["Lost track of time",9],["Picked someone up",5]]},{"q":"Name a sign someone is about to start gossiping.","a":[["Leans closer",32],["Lowers voice",25],["Looks around",17],["Says don't tell",12],["Closes door",9],["Starts with girl",5]]},{"q":"Name something guests remember about a party a year later.","a":[["Family drama",32],["Amazing food",25],["Someone dancing",17],["Birthday speech",12],["Funny outfit",9],["Unexpected guest",5]]},{"q":"Name an occasion when a family member acts like the expert.","a":[["Cooking",32],["Directions",25],["Raising kids",17],["Home repairs",12],["Money advice",9],["Party planning",5]]},{"q":"Name something people claim not to care about but secretly do.","a":[["Guest list",32],["Birthday gifts",25],["Social media likes",17],["Seating",12],["Who's dating whom",9],["Being in photos",5]]},{"q":"Name something that makes a family recipe hard to recreate.","a":[["No measurements",32],["Secret ingredient",25],["Cooking by instinct",17],["Different ingredients",12],["Special pan",9],["Years of practice",5]]},{"q":"Name why a guest might unexpectedly become the center of attention.","a":[["Big announcement",32],["Outfit",25],["Argument",17],["Starts dancing",12],["Proposal",9],["Funny story",5]]},{"q":"Name a situation where someone says 'Don't tell your mother.'","a":[["Broke something",32],["Expensive purchase",25],["Secret outing",17],["Bad grade",12],["Surprise gift",9],["Family gossip",5]]},{"q":"Name something someone packs as leftovers that wasn't on their plate.","a":[["Extra meat",32],["Dessert",25],["Mac and cheese",17],["Bread",12],["Sauce",9],["Food for someone home",5]]},{"q":"Name something at a gathering that exposes a long-kept family secret.","a":[["Old photos",32],["Auntie's story",25],["Family tree",17],["Phone message",12],["A toast",9],["Unexpected visitor",5]]},{"q":"Name a moment when family members suddenly become competitive.","a":[["Card games",32],["Trivia",25],["Cooking contest",17],["Karaoke",12],["Dancing",9],["Board games",5]]},{"q":"Name something people only admit after hours at a party.","a":[["They were upset",32],["Dislike a dish",25],["Want to leave",17],["Knew the secret",12],["Dating someone",9],["Exhausted",5]]},{"q":"Name what can turn a quick visit into an all-night stay.","a":[["Great conversation",32],["Good food",25],["Card game",17],["Music",12],["Family stories",9],["Surprise guest",5]]},{"q":"Name something a grown child still gets scolded about at Mom's house.","a":[["Leaving dishes",32],["Not calling",25],["Shoes on furniture",17],["Being late",12],["Wasting food",9],["Messy room",5]]}];
 const fastQuestions=[["Something you bring to a birthday party","Gift",42],["Somewhere Mom goes to relax","Beach",38],["Something you do first thing in the morning","Brush teeth",36],["A food you save room for","Cake",40],["Something Mom deserves more of","Rest",37]];
 const screenMode=new URLSearchParams(location.search).has('screen');if(screenMode){document.body.classList.add('screen');document.title='Audience Board · Birthday Feud'}const $=id=>document.getElementById(id),key='birthdayFamilyFeud1';const blank=()=>({r:0,sc:[0,0],names:['Team A','Team B'],revealed:{},strikes:0,history:[],mom:'',sound:true,tvScale:65,phase:'FACE-OFF',turn:-1,buzzLock:false,clock:{duration:20,remaining:20,ends:0,running:false}});let s=blank();try{let v=JSON.parse(localStorage.getItem(key));if(v&&Array.isArray(v.sc))s={...blank(),...v}}catch(e){}let audio,timer,syncing=false,lastTickSecond=null;const persist=()=>{if(syncing)return;try{localStorage.setItem(key,JSON.stringify(s))}catch(e){}},m=()=>s.r>=14?3:s.r>=9?2:1,seen=()=>s.revealed[s.r]||[],pot=()=>data[s.r].a.reduce((t,[a,p],i)=>t+(seen().includes(i)?p*m():0),0);function beep(f=650,d=.15){if(!s.sound)return;try{audio??=new (window.AudioContext||window.webkitAudioContext)();audio.resume();let o=audio.createOscillator(),g=audio.createGain();o.type='triangle';o.frequency.value=f;g.gain.setValueAtTime(.12,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+d);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+d)}catch(e){}}function flash(t,x=false,ms=1200){if(!syncing&&!screenMode)try{localStorage.setItem(key+'-effect',JSON.stringify({t,x,ms,stamp:Date.now()}))}catch(e){}$('overlayText').textContent=t;$('overlayText').className=x?'x':'';$('overlay').classList.add('show');clearTimeout(flash.wait);flash.wait=setTimeout(()=>$('overlay').classList.remove('show'),ms)}function msg(t){$('status').textContent=t;persist()}
-function fitAudienceBoard(){
-  if(!screenMode)return;
-  const board=document.querySelector('.wrap');if(!board)return;
-  const boardWidth=board.offsetWidth||1200;
-  const boardHeight=board.offsetHeight||900;
-  const viewportFit=Math.min((innerWidth-32)/boardWidth,(innerHeight-32)/boardHeight,1);
-  const desired=Math.max(.45,Math.min(1,(Number(s.tvScale)||65)/100));
-  document.documentElement.style.setProperty('--feud-fit-scale',String(Math.max(.1,viewportFit*desired)));
-}
-window.addEventListener('resize',()=>requestAnimationFrame(fitAudienceBoard));
+function fitAudienceBoard(){if(!screenMode)return;document.documentElement.style.setProperty('--feud-fit-scale','1')}
 function applyTvScale(){
-  const value=Math.max(45,Math.min(100,Number(s.tvScale)||65));
-  document.documentElement.style.setProperty('--feud-tv-scale',String(value/100));
-  if(!screenMode){$('tvScale').value=String(value);$('tvScaleValue').textContent=value+'%'}
-  else requestAnimationFrame(fitAudienceBoard);
+ const value=Math.max(45,Math.min(100,Number(s.tvScale)||65));
+ document.documentElement.style.setProperty('--feud-tv-scale',String(value/100));
+ if(!screenMode){$('tvScale').value=String(value);$('tvScaleValue').textContent=value+'%'}
 }
 function setTvScale(value){if(screenMode)return;s.tvScale=Math.max(45,Math.min(100,Math.round(value/5)*5));draw()}
 $('tvScale').addEventListener('input',e=>setTvScale(Number(e.target.value)));
