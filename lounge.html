@@ -23,7 +23,7 @@ canvas{position:fixed;inset:0;width:100%;height:100%;display:block}
 .orb:before,.orb:after{content:"";position:absolute;inset:7%;border-radius:50%;border:1px dashed #efdeaa1e}
 .orb:after{inset:20%;border:2px solid #f1d29510}
 .controls{position:fixed;right:16px;top:15px;z-index:10;display:flex;gap:8px;align-items:center;font:600 14px Arial,sans-serif;opacity:.12;transition:opacity .25s;flex-wrap:wrap;justify-content:flex-end;max-width:min(85vw,750px)}
-.controls:hover,.controls:focus-within{opacity:1}.controls button,.controls select{font:700 14px Arial,sans-serif;border:1px solid #ffe7ab99;border-radius:9px;background:#11182de6;color:#fff;padding:10px 12px;cursor:pointer}.controls button:focus-visible,.controls select:focus-visible{outline:3px solid white}
+.controls:hover,.controls:focus-within{opacity:1}.controls button,.controls select{font:700 14px Arial,sans-serif;border:1px solid #ffe7ab99;border-radius:9px;background:#11182de6;color:#fff;padding:10px 12px;cursor:pointer}.controls button:focus-visible,.controls select:focus-visible,.controls input:focus-visible{outline:3px solid white}.size-control{display:inline-flex;align-items:center;gap:8px;font:700 13px Arial,sans-serif;color:white;background:#10182eea;border:1px solid #ffe7ab99;border-radius:9px;padding:7px 10px}.size-control input{width:105px;accent-color:#ffe6a0}.size-control output{min-width:37px}
 .disco .stage{border-color:#edb8ff83}.disco .number{filter:drop-shadow(0 0 55px #fd84e5ad)}.disco .subtitle{color:#ffbaf0}.disco .header{color:#ffc5ed}
 .classic .stage{border-color:#cde5ff99}.classic .number{filter:drop-shadow(0 0 42px #91d9ff70)}
 .hint{position:fixed;left:18px;bottom:12px;z-index:8;font:12px Arial,sans-serif;color:#ffffff88;opacity:0;animation:hint 5s ease-out 1}
@@ -41,6 +41,8 @@ canvas{position:fixed;inset:0;width:100%;height:100%;display:block}
 .message{font-size:clamp(18px,2.3vw,40px)}
 .bottom{bottom:2.5vh;font-size:clamp(11px,1vw,18px);letter-spacing:.25em}
 @media(max-width:700px){.stage{inset:4vh 4vw;padding:1.8vh 2vw}.headline{font-size:clamp(40px,8.5vw,70px)}.number{font-size:clamp(76px,min(23vw,23vh),165px)}.subtitle{letter-spacing:.08em}.bottom{bottom:2vh}}
+/* Strong initial scale-down for large televisions; adjustable live. */
+:root{--lounge-display-scale:.65}.stage{transform:scale(var(--lounge-display-scale));transform-origin:center center}
 </style></head>
 <body class="lounge">
 <canvas id="ambient" aria-hidden="true"></canvas><div class="background"></div><div class="orb"></div>
@@ -54,15 +56,25 @@ canvas{position:fixed;inset:0;width:100%;height:100%;display:block}
 </main>
 <nav class="controls" aria-label="Display controls">
 <select id="theme" title="Animation style"><option value="lounge">✨ Golden lounge</option><option value="disco">🪩 Disco lights</option><option value="classic">🌌 Starry night</option></select>
-<button id="fullscreen" title="Fullscreen (F)">⛶ Fullscreen</button>
+<label class="size-control" for="displaySize">Screen size <input id="displaySize" type="range" min="50" max="100" step="5" value="65" aria-label="Birthday lounge screen size"><output id="sizeValue">65%</output></label><button id="fullscreen" title="Fullscreen (F)">⛶ Fullscreen</button>
 <button id="pause" title="Pause motion (space)">⏸ Pause</button>
 <button id="hide" title="Hide buttons (H)">Hide controls</button>
 <a href="host.html" style="color:#fff;text-decoration:none;font:700 13px Arial,sans-serif;background:#101c35;padding:10px;border:1px solid #ffe3a566;border-radius:8px">Game host</a>
-</nav><div class="hint">Press F for fullscreen • H to hide controls • Space to pause • 1/2/3 to change scene</div>
+</nav><div class="hint">Press F for fullscreen • H for controls • - / + to resize • Space to pause • 1/2/3 for themes</div>
 <script>
 (()=>{'use strict';
 const canvas=document.getElementById('ambient'),ctx=canvas.getContext('2d',{alpha:false}),root=document.body;
 const theme=document.getElementById('theme'),pauseBtn=document.getElementById('pause'),controls=document.querySelector('.controls');
+const sizeInput=document.getElementById('displaySize'),sizeValue=document.getElementById('sizeValue');
+function setDisplaySize(value){
+  const n=Math.max(50,Math.min(100,Math.round(Number(value)/5)*5||65));
+  document.documentElement.style.setProperty('--lounge-display-scale',String(n/100));
+  sizeInput.value=String(n);sizeValue.textContent=n+'%';
+  try{localStorage.setItem('birthday-lounge-display-size',String(n))}catch(e){}
+}
+let savedSize=65;try{const v=Number(localStorage.getItem('birthday-lounge-display-size'));if(v>=50&&v<=100)savedSize=v}catch(e){}
+setDisplaySize(savedSize);
+sizeInput.addEventListener('input',()=>setDisplaySize(sizeInput.value));
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let width=1,height=1,dpr=1,particles=[],beams=[],rings=[],comets=[],tick=0,last=0,paused=reduced;
 const messages=["A night to remember ✦","55 years of love & laughter","The queen of the celebration","Here's to beautiful memories","Shine bright, birthday star","Cheers to 55 fabulous years","Family, music & good times"];
@@ -130,7 +142,9 @@ theme.onchange=()=>{root.className=theme.value};
 addEventListener('keydown',e=>{
   if(e.key==='f'||e.key==='F')document.getElementById('fullscreen').click();
   if(e.key==='h'||e.key==='H')controls.style.display=controls.style.display==='none'?'flex':'none';
-  if(e.code==='Space'){e.preventDefault();setPause(!paused)}
+  if(e.code==='Space'&&e.target.tagName!=='INPUT'){e.preventDefault();setPause(!paused)}
+  if(e.key==='-'||e.key==='_')setDisplaySize(Number(sizeInput.value)-5);
+  if(e.key==='+'||e.key==='=')setDisplaySize(Number(sizeInput.value)+5);
   if(['1','2','3'].includes(e.key)){theme.value=['lounge','disco','classic'][Number(e.key)-1];theme.onchange()}
 });
 setInterval(()=>{if(paused)return;message.classList.add('out');setTimeout(()=>{messageIndex=(messageIndex+1)%messages.length;message.textContent=messages[messageIndex];message.classList.remove('out')},750)},6500);
